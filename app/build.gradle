@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.kaleniuk2.repositoriosgithub'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.kaleniuk2.repositoriosgithub"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -73,6 +73,10 @@ dependencies {
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.44"
