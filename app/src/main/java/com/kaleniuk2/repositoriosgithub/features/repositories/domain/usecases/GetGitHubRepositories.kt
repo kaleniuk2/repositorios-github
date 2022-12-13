@@ -1,0 +1,12 @@
+package com.kaleniuk2.repositoriosgithub.features.repositories.domain.usecases
+
+import com.kaleniuk2.repositoriosgithub.features.repositories.domain.model.GitHubItem
+import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.GitHubRepository
+
+class GetGitHubRepositories(
+    private val repository: GitHubRepository
+) {
+    suspend operator fun invoke(): List<GitHubItem> {
+        return repository.getAll()
+    }
+}

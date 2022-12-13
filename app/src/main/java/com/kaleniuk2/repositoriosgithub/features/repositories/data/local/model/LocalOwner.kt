@@ -1,6 +1,5 @@
-package com.kaleniuk2.repositoriosgithub.features.repositories.data.local
+package com.kaleniuk2.repositoriosgithub.features.repositories.data.local.model
 
-import com.google.gson.annotations.SerializedName
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.model.Owner
 
 data class LocalOwner(

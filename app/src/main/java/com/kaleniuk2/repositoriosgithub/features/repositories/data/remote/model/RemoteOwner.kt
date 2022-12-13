@@ -1,6 +1,8 @@
-package com.kaleniuk2.repositoriosgithub.features.repositories.data.remote
+package com.kaleniuk2.repositoriosgithub.features.repositories.data.remote.model
 
 import com.google.gson.annotations.SerializedName
+import com.kaleniuk2.repositoriosgithub.features.repositories.data.local.model.LocalGitHubItem
+import com.kaleniuk2.repositoriosgithub.features.repositories.data.local.model.LocalOwner
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.model.Owner
 
 data class RemoteOwner(
@@ -52,6 +54,26 @@ data class RemoteOwner(
     val siteAdmin: Boolean
 ) {
     fun toOwner() = Owner(
+        login = login,
+        id = id,
+        nodeID = nodeID,
+        avatarURL = avatarURL,
+        gravatarID = gravatarID,
+        url = url,
+        htmlURL = htmlURL,
+        followersURL = followersURL,
+        followingURL = followingURL,
+        gistsURL = gistsURL,
+        starredURL = starredURL,
+        subscriptionsURL = subscriptionsURL,
+        organizationsURL = organizationsURL,
+        reposURL = reposURL,
+        eventsURL = eventsURL,
+        receivedEventsURL = receivedEventsURL,
+        siteAdmin = siteAdmin
+    )
+
+    fun toDBOwner() = LocalOwner(
         login = login,
         id = id,
         nodeID = nodeID,
