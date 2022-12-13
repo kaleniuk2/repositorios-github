@@ -7,8 +7,9 @@ import com.kaleniuk2.repositoriosgithub.features.repositories.data.remote.util.a
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.model.GitHubItem
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.EmptyLocalDataAndNoInternetException
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.GitHubRepository
+import javax.inject.Inject
 
-class GitHubRepositoryImpl(
+class GitHubRepositoryImpl @Inject constructor(
     val dao: GitHubDao,
     val service: GitHubService,
     val networkUtil: NetworkUtil

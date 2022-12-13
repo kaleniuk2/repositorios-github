@@ -6,7 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GitHubRepositoriesViewModel @Inject constructor(getGitHubRepositories: GetGitHubRepositories) :
+class GitHubRepositoriesViewModel @Inject constructor(val getGitHubRepositories: GetGitHubRepositories) :
     ViewModel() {
 
 

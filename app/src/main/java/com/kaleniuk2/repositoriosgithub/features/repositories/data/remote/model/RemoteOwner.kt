@@ -55,7 +55,6 @@ data class RemoteOwner(
 ) {
     fun toOwner() = Owner(
         login = login,
-        id = id,
         nodeID = nodeID,
         avatarURL = avatarURL,
         gravatarID = gravatarID,
@@ -75,7 +74,6 @@ data class RemoteOwner(
 
     fun toDBOwner() = LocalOwner(
         login = login,
-        id = id,
         nodeID = nodeID,
         avatarURL = avatarURL,
         gravatarID = gravatarID,

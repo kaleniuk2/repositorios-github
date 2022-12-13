@@ -1,10 +1,7 @@
 package com.kaleniuk2.repositoriosgithub.features.repositories.domain.model
 
-import com.google.gson.annotations.SerializedName
-
 data class Owner (
     val login: String,
-    val id: Long,
     val nodeID: String,
     val avatarURL: String,
     val gravatarID: String,

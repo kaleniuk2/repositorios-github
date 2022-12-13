@@ -49,18 +49,4 @@ object AppModule {
 
         return OkHttpClient.Builder().addInterceptor(interceptor).build()
     }
-
-    @Provides
-    @Singleton
-    fun provideRepository(
-        db: GitHubDataBase,
-        service: GitHubService,
-        networkUtil: NetworkUtil
-    ): GitHubRepository {
-        return GitHubRepositoryImpl(
-            db.gitHubDao,
-            service,
-            networkUtil
-        )
-    }
 }
