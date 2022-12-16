@@ -20,9 +20,6 @@ data class RemoteOwner(
 
     val url: String,
 
-    @SerializedName("html_url")
-    val htmlURL: String,
-
     @SerializedName("followers_url")
     val followersURL: String,
 
@@ -59,7 +56,6 @@ data class RemoteOwner(
         avatarURL = avatarURL,
         gravatarID = gravatarID,
         url = url,
-        htmlURL = htmlURL,
         followersURL = followersURL,
         followingURL = followingURL,
         gistsURL = gistsURL,
@@ -78,7 +74,6 @@ data class RemoteOwner(
         avatarURL = avatarURL,
         gravatarID = gravatarID,
         url = url,
-        htmlURL = htmlURL,
         followersURL = followersURL,
         followingURL = followingURL,
         gistsURL = gistsURL,

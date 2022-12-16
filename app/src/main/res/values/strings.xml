@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Repositorios Github</string>
+    <string name="private_repository">Privado</string>
+    <string name="public_repository">Público</string>
+    <string name="access_repository">Acessar Repositório</string>
+    <string name="forks">Forks: %1$s</string>
+    <string name="error">Erro ao obter dados</string>
+    <string name="unknown_error">Erro desconhecido</string>
+    <string name="repositories">Repositórios</string>
 </resources>

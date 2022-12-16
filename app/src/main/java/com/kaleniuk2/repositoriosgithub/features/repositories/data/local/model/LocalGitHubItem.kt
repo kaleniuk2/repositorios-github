@@ -14,7 +14,10 @@ data class LocalGitHubItem(
     var id: Int = 0,
     var name: String = "",
     var fullName: String = "",
+    var forks: Int = 0,
     var private: Boolean = true,
+    var description: String = "",
+    var htmlUrl: String = "",
     @Embedded
     var owner: LocalOwner = LocalOwner(),
 ) {
@@ -23,6 +26,9 @@ data class LocalGitHubItem(
         name = name,
         fullName = fullName,
         private = private,
+        forks = forks,
+        htmlUrl = htmlUrl,
+        description = description,
         owner = owner.toOwner()
     )
 }

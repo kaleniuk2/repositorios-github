@@ -6,7 +6,6 @@ data class Owner (
     val avatarURL: String,
     val gravatarID: String,
     val url: String,
-    val htmlURL: String,
     val followersURL: String,
     val followingURL: String,
     val gistsURL: String,

@@ -5,5 +5,8 @@ data class GitHubItem(
     val name: String,
     val fullName: String,
     val private: Boolean,
+    val forks: Int,
+    val htmlUrl: String,
+    val description: String,
     val owner: Owner,
 )

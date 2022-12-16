@@ -13,30 +13,30 @@ class GitHubRepositoryImpl @Inject constructor(
     val dao: GitHubDao,
     val service: GitHubService,
     val networkUtil: NetworkUtil
-): GitHubRepository {
+) : GitHubRepository {
     private var currentPage = 1
 
     override suspend fun getAll(): List<GitHubItem> {
-         if (networkUtil.getConnectionType() != 0) {
-             val response = apiCall { service.getAll() }
+        if (networkUtil.getConnectionType() != 0) {
+            val response = apiCall { service.getAll() }
 
-             if (response.isSuccess && response.getOrNull() != null) {
-                 checkCurrentPageToDeleteItems()
+            if (response.isSuccess && response.getOrNull() != null) {
+                checkCurrentPageToDeleteItems()
 
-                 val listItems = response.getOrNull()?.items ?: emptyList()
-                 currentPage++
-                 return listItems.map {
-                     dao.insertRepository(it.toDbRepository())
-                     it.toItemRepository()
-                 }
-             }
+                val listItems = response.getOrNull()?.items ?: emptyList()
+                currentPage++
+                return listItems.map {
+                    dao.insertRepository(it.toDbRepository())
+                    it.toItemRepository()
+                }
+            }
+        }
+        val resultFromDB = getFromDb()
 
-             if (currentPage == 1) {
-                 throw EmptyLocalDataAndNoInternetException()
-             }
-             return getFromDb()
-         }
-        return getFromDb()
+        if (resultFromDB.isEmpty() && currentPage == 1) {
+            throw EmptyLocalDataAndNoInternetException()
+        }
+        return resultFromDB
     }
 
     private suspend fun checkCurrentPageToDeleteItems() {
@@ -46,9 +46,5 @@ class GitHubRepositoryImpl @Inject constructor(
 
     private suspend fun getFromDb(): List<GitHubItem> {
         return dao.getRepositories().map { it.toItemRepository() }
-    }
-
-    companion object {
-        private const val ITEMS_PER_PAGE = 30
     }
 }

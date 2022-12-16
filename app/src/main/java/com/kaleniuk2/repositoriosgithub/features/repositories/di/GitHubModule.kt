@@ -13,6 +13,7 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -24,6 +25,7 @@ object GitHubModule {
     fun providesGitHubService(okHttpClient: OkHttpClient, baseUrl: String): GitHubService {
         return Retrofit.Builder()
             .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
             .create(GitHubService::class.java)

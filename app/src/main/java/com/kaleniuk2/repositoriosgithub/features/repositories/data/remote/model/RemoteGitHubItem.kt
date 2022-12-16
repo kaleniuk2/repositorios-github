@@ -10,7 +10,11 @@ data class RemoteGitHubItem(
     val name: String,
     @SerializedName("full_name")
     val fullName: String,
+    @SerializedName("html_url")
+    val htmlUrl: String,
     val private: Boolean,
+    val forks: Int,
+    val description: String,
     val owner: RemoteOwner,
 ) {
     fun toItemRepository() = GitHubItem(
@@ -18,6 +22,9 @@ data class RemoteGitHubItem(
         name = name,
         fullName = fullName,
         private = private,
+        forks = forks,
+        htmlUrl = htmlUrl,
+        description = description,
         owner = owner.toOwner()
     )
 
@@ -26,6 +33,8 @@ data class RemoteGitHubItem(
         name = name,
         fullName = fullName,
         private = private,
+        description = description,
+        forks = forks,
         owner = owner.toDBOwner()
     )
 }
