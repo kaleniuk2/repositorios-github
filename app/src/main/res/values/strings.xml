@@ -7,4 +7,5 @@
     <string name="error">Erro ao obter dados</string>
     <string name="unknown_error">Erro desconhecido</string>
     <string name="repositories">Repositórios</string>
+    <string name="no_internet">Sem internet</string>
 </resources>

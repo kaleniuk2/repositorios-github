@@ -14,7 +14,7 @@ data class RemoteGitHubItem(
     val htmlUrl: String,
     val private: Boolean,
     val forks: Int,
-    val description: String,
+    val description: String?,
     val owner: RemoteOwner,
 ) {
     fun toItemRepository() = GitHubItem(
@@ -33,7 +33,7 @@ data class RemoteGitHubItem(
         name = name,
         fullName = fullName,
         private = private,
-        description = description,
+        description = description ?: "",
         forks = forks,
         owner = owner.toDBOwner()
     )

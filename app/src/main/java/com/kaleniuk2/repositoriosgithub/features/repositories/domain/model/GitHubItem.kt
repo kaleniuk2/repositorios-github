@@ -7,6 +7,6 @@ data class GitHubItem(
     val private: Boolean,
     val forks: Int,
     val htmlUrl: String,
-    val description: String,
+    val description: String?,
     val owner: Owner,
 )

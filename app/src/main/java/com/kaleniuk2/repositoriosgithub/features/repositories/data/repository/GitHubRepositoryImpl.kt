@@ -7,6 +7,8 @@ import com.kaleniuk2.repositoriosgithub.features.repositories.data.remote.util.a
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.model.GitHubItem
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.EmptyLocalDataAndNoInternetException
 import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.GitHubRepository
+import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.HasConsultedDbAndNoInternetException
+import com.kaleniuk2.repositoriosgithub.features.repositories.domain.repository.UnknownErrorException
 import javax.inject.Inject
 
 class GitHubRepositoryImpl @Inject constructor(
@@ -15,10 +17,11 @@ class GitHubRepositoryImpl @Inject constructor(
     val networkUtil: NetworkUtil
 ) : GitHubRepository {
     private var currentPage = 1
+    private var hasConsuledtDb = false
 
     override suspend fun getAll(): List<GitHubItem> {
         if (networkUtil.getConnectionType() != 0) {
-            val response = apiCall { service.getAll() }
+            val response = apiCall { service.getAll(page = currentPage) }
 
             if (response.isSuccess && response.getOrNull() != null) {
                 checkCurrentPageToDeleteItems()
@@ -30,12 +33,17 @@ class GitHubRepositoryImpl @Inject constructor(
                     it.toItemRepository()
                 }
             }
+            throw UnknownErrorException()
         }
         val resultFromDB = getFromDb()
 
         if (resultFromDB.isEmpty() && currentPage == 1) {
             throw EmptyLocalDataAndNoInternetException()
         }
+
+        if (hasConsuledtDb)
+            throw HasConsultedDbAndNoInternetException()
+        hasConsuledtDb = true
         return resultFromDB
     }
 
