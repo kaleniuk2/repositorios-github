@@ -58,7 +58,7 @@ class GitHubRepositoriesViewModel @Inject constructor(
                 currentItems.addAll(result)
                 _state.value = _state.value.copy(items = currentItems)
             } catch (e: EmptyLocalDataAndNoInternetException) {
-                _errorState.emit(UiEvent.ShowSnackBar(R.string.error))
+                emitError()
             } catch (e: UnknownErrorException) {
                 _errorState.emit(UiEvent.ShowSnackBar(R.string.unknown_error))
             } catch (e: HasConsultedDbAndNoInternetException) {
@@ -69,6 +69,12 @@ class GitHubRepositoriesViewModel @Inject constructor(
             }
             _loading.value = false
 
+        }
+    }
+
+    fun emitError() {
+        viewModelScope.launch {
+            _errorState.emit(UiEvent.ShowSnackBar(R.string.error))
         }
     }
 }

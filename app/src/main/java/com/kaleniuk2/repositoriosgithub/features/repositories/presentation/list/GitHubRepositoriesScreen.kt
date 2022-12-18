@@ -3,16 +3,12 @@ package com.kaleniuk2.repositoriosgithub.features.repositories.presentation.list
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -22,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kaleniuk2.repositoriosgithub.R
-import com.kaleniuk2.repositoriosgithub.commons.OnBottomReached
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -30,7 +25,6 @@ fun GitHubRepositoriesScreen(
     navController: NavController,
     viewModel: GitHubRepositoriesViewModel = hiltViewModel()
 ) {
-    val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
     val context = LocalContext.current
     val items = viewModel.state.value.items
