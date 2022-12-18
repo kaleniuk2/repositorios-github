@@ -104,6 +104,13 @@ dependencies {
     // Needed for createAndroidComposeRule, but not createComposeRule:
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_ui_version")
 
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "io.mockk:mockk-android:1.13.3"
+    testImplementation "io.mockk:mockk-agent:1.13.3"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2"
+
     androidTestImplementation "io.mockk:mockk-android:1.13.3"
     androidTestImplementation "io.mockk:mockk-agent:1.13.3"
+
+
 }
